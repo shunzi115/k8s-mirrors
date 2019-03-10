@@ -1,8 +1,9 @@
 #!/bin/bash
 echo "add images"
-cat > $(pwd)/kubeadm-images.yaml << EOF	# add images
-apiVersion: kubeadm.k8s.io/v1alpha3	docker run --rm -it \
-kind: ClusterConfiguration	        -v /var/run/docker.sock:/var/run/docker.sock  \
+cat > $(pwd)/kubeadm-images.yaml << EOF	
+# add images
+apiVersion: kubeadm.k8s.io/v1alpha3	
+kind: ClusterConfiguration
 imageRepository: registry.cn-hangzhou.aliyuncs.com/image-mirror	
 EOF
 kubeadm config images pull --config $(pwd)/kubeadm-images.yaml
